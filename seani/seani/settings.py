@@ -11,18 +11,23 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+load_dotenv()
+
+
+
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-*bg6ddkipadrxu6odo)#h$oyh7noi9o4!1i!@^)2saic$ek5ag'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -86,6 +91,7 @@ DATABASES = {
         'PORT':'3306'
 
 
+
         
     }
 }
@@ -132,3 +138,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+cloudinary.config( 
+  cloud_name = str(os.environ.get('CLOUD_NAME')), 
+  api_key = str(os.environ.get('API_KEY')), 
+  api_secret = str(os.environ.get('API_SECRET')), 
+  secure = True
+)
