@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     #local apps
     'career.apps.CareerConfig',
     'library.apps.LibraryConfig',
+    'exam.apps.ExamConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
